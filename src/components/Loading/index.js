@@ -3,7 +3,7 @@ import { FiLoader } from 'react-icons/fi';
 
 import { Container, TextContainer, Text, Header } from './styles';
 
-export default function EmptyPage() {
+export default function Loading() {
   return (
     <Container>
       <Header>

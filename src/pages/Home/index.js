@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
   Container,
@@ -13,10 +13,27 @@ import LogoImg from '~/assets/logo.png';
 
 import EmptyPage from '~/components/EmptyPage';
 import Loading from '~/components/Loading';
+import Lista from '~/components/Lista';
+
+import api from '~/services/api';
 
 export default function Home() {
   const [people, setPeople] = useState([]);
   const [laoding, setLoading] = useState(false);
+
+  async function loadDataOfPeoples() {
+    setLoading(true);
+
+    const response = await api.get('people');
+
+    setPeople(response.data.results);
+
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    loadDataOfPeoples();
+  }, []);
 
   return (
     <Container>
@@ -37,9 +54,31 @@ export default function Home() {
           {people.length === 0 ? (
             <EmptyPage />
           ) : (
-            <div>
-              <h1>Totods personagens encontrados</h1>
-            </div>
+            <Lista>
+              {people.map((peopleItem) => {
+                return (
+                  <li>
+                    <div className="date">
+                      <p>{peopleItem.created}</p>
+                    </div>
+
+                    <div className="header">
+                      <p>{peopleItem.name}</p>
+                    </div>
+
+                    <div className="descripiton">
+                      <p>{peopleItem.eye_color}</p>
+                      <p>{peopleItem.hair_color}</p>
+                      <p>{peopleItem.skin_color}</p>
+                    </div>
+
+                    <div className="gender">
+                      <p>{peopleItem.gender}</p>
+                    </div>
+                  </li>
+                );
+              })}
+            </Lista>
           )}
         </>
       )}
