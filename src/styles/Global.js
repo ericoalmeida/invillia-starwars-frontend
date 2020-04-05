@@ -12,8 +12,15 @@ export default createGlobalStyle`
   outline: 0;
 }
 
-html, body, #root{
+html, body, #root, .App{
   height: 100%
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 body{
