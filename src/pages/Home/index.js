@@ -16,7 +16,7 @@ import Loading from '~/components/Loading';
 
 export default function Home() {
   const [people, setPeople] = useState([]);
-  const [laoding, setLoading] = useState(true);
+  const [laoding, setLoading] = useState(false);
 
   return (
     <Container>

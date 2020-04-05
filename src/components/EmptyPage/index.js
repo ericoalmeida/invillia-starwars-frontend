@@ -8,7 +8,7 @@ export default function EmptyPage() {
     <Container>
       <Header>
         <TextContainer>
-          <Text>Não foi encontrado nenhum personagem de STAR WARS</Text>
+          <Text>Oops! Não encontramos nenhum personagem de STAR WARS</Text>
           <FiFrown size={25} color="#999" />
         </TextContainer>
       </Header>

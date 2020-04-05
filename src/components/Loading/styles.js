@@ -11,10 +11,9 @@ export const Header = styled.header`
   background: #fff;
   height: 400px;
   display: flex;
-  flex-direction: column;
 
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-around;
   padding: 30px;
 `;
 
@@ -23,20 +22,15 @@ export const TextContainer = styled.div`
   height: 60px;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   justify-items: center;
   align-items: center;
-
-  p {
-    margin-right: 10px;
-    margin-top: 20px;
-    color: #999;
-    font-size: 30px;
-  }
 `;
 
 export const Text = styled.p`
+  font-weight: normal;
+  font-size: 14;
+  color: #999;
   margin-right: 10px;
-  margin-top: 20px;
 `;
