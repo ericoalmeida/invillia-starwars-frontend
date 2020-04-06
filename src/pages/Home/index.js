@@ -9,6 +9,7 @@ import {
   HeaderItemDescription,
   HeaderItemGender,
   HeaderItemSpaceship,
+  Avatar,
 } from './styles';
 
 import EmptyPage from '~/components/EmptyPage';
@@ -73,9 +74,17 @@ export default function Home() {
                     </HeaderItem>
 
                     <HeaderItemDescription>
-                      <p>{peopleItem.eye_color}</p>
-                      <p>{peopleItem.hair_color}</p>
-                      <p>{peopleItem.skin_color}</p>
+                      <div className="avatar">
+                        <Avatar
+                          src={`https://api.adorable.io/avatars/42/${peopleItem.name}@adorable.png`}
+                        />
+                      </div>
+
+                      <div className="descrip">
+                        <p>{peopleItem.eye_color}</p>
+                        <p>{peopleItem.hair_color}</p>
+                        <p>{peopleItem.skin_color}</p>
+                      </div>
                     </HeaderItemDescription>
 
                     <HeaderItemGender>

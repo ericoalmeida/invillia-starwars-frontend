@@ -42,7 +42,7 @@ export const HeaderItem = styled.div`
 
 export const HeaderItemDescription = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
   border-bottom: 1px solid #e0e0e0;
@@ -53,6 +53,21 @@ export const HeaderItemDescription = styled.div`
     font-weight: normal;
     font-size: 12px;
     line-height: 24px;
+  }
+
+  .avatar {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    margin-left: 5px;
+  }
+
+  .descrip {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
   }
 `;
 
@@ -89,4 +104,8 @@ export const HeaderItemSpaceship = styled.div`
     font-weight: bold;
     color: #fff;
   }
+`;
+
+export const Avatar = styled.img`
+  border-radius: 21px;
 `;
