@@ -10,6 +10,9 @@ import {
   HeaderItemGender,
   HeaderItemSpaceship,
   Avatar,
+  LabelDescription,
+  LabelTitleDescription,
+  LabelTitleGender,
 } from './styles';
 
 import EmptyPage from '~/components/EmptyPage';
@@ -81,14 +84,35 @@ export default function Home() {
                       </div>
 
                       <div className="descrip">
-                        <p>{peopleItem.eye_color}</p>
-                        <p>{peopleItem.hair_color}</p>
-                        <p>{peopleItem.skin_color}</p>
+                        <LabelTitleDescription>
+                          Eye Color:
+                        </LabelTitleDescription>
+
+                        <LabelDescription>
+                          {peopleItem.eye_color}
+                        </LabelDescription>
+
+                        <LabelTitleDescription>
+                          Hair Color:
+                        </LabelTitleDescription>
+
+                        <LabelDescription>
+                          {peopleItem.hair_color}
+                        </LabelDescription>
+
+                        <LabelTitleDescription>
+                          Skin Color:
+                        </LabelTitleDescription>
+
+                        <LabelDescription>
+                          {peopleItem.skin_color}
+                        </LabelDescription>
                       </div>
                     </HeaderItemDescription>
 
                     <HeaderItemGender>
-                      <p>{peopleItem.gender}</p>
+                      <LabelTitleGender>Gender:</LabelTitleGender>
+                      <LabelDescription>{peopleItem.gender}</LabelDescription>
                     </HeaderItemGender>
 
                     <HeaderItemSpaceship>

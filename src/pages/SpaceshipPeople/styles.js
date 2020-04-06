@@ -80,7 +80,7 @@ export const HeaderItem = styled.div`
   justify-content: center;
   align-items: center;
   height: 30px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 2px solid #7a1ea3;
   margin-bottom: 5px;
   padding: 5px 0;
 `;

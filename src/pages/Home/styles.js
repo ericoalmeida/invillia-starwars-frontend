@@ -48,13 +48,6 @@ export const HeaderItemDescription = styled.div`
   border-bottom: 1px solid #e0e0e0;
   margin-bottom: 5px;
 
-  p {
-    color: #737373;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 24px;
-  }
-
   .avatar {
     height: 100%;
     display: flex;
@@ -75,16 +68,9 @@ export const HeaderItemGender = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  justify-items: flex-start;
   align-items: flex-start;
   border-bottom: 1px solid #e0e0e0;
-  margin-bottom: 5px;
-
-  p {
-    color: #737373;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 24px;
-  }
 `;
 
 export const HeaderItemSpaceship = styled.div`
@@ -108,4 +94,26 @@ export const HeaderItemSpaceship = styled.div`
 
 export const Avatar = styled.img`
   border-radius: 21px;
+`;
+
+export const LabelDescription = styled.p`
+  color: #737373;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 18px;
+  margin-left: 5px;
+`;
+
+export const LabelTitleDescription = styled.p`
+  color: #40194e;
+  font-size: 12px;
+
+  margin-top: 5px;
+`;
+
+export const LabelTitleGender = styled.p`
+  color: #40194e;
+  font-size: 12px;
+
+  margin-top: 5px;
 `;
