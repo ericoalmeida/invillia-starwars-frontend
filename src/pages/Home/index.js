@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import crypto from 'crypto';
@@ -36,7 +36,7 @@ export default function Home() {
   const [previousPage, setPreviousPage] = useState(null);
   const [nextPage, setNextPage] = useState(null);
 
-  async function loadDataOfPeoples() {
+  const loadDataOfPeoples = useCallback(async () => {
     setLoading(true);
 
     const response = await api.get(`people/?page=${page}`);
@@ -46,7 +46,7 @@ export default function Home() {
     setNextPage(response.data.next);
 
     setLoading(false);
-  }
+  }, [page]);
 
   function showSpaceShips(apeople) {
     history.push('/spaceshippeople', {
@@ -73,7 +73,7 @@ export default function Home() {
 
   useEffect(() => {
     loadDataOfPeoples();
-  }, [page]);
+  }, [loadDataOfPeoples, page]);
 
   return (
     <Container>

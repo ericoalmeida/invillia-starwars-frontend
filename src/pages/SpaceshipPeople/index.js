@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import crypto from 'crypto';
@@ -29,7 +29,7 @@ export default function SpaceshipPeople({ location }) {
   const [loading, setLoading] = useState(false);
   const [starShips, setStarShips] = useState([]);
 
-  function loadStarShipData() {
+  const loadStarshipData = useCallback(async () => {
     urlStarships.forEach(async (url) => {
       setLoading(true);
 
@@ -39,11 +39,11 @@ export default function SpaceshipPeople({ location }) {
 
       setLoading(false);
     });
-  }
+  }, [urlStarships, starShips]);
 
   useEffect(() => {
-    loadStarShipData();
-  }, []);
+    loadStarshipData();
+  }, [loadStarshipData]);
 
   return (
     <Container>
