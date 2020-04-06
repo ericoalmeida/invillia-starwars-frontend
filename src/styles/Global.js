@@ -21,6 +21,7 @@ html, body, #root, .App{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: auto;
 }
 
 body{

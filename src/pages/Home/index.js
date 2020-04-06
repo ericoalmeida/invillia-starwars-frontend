@@ -2,11 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import {
   Container,
-  Header,
-  Logo,
-  LogoContainer,
-  Title,
-  TitleContainer,
   DateContainer,
   HeaderItem,
   HeaderItemDescription,
@@ -14,15 +9,14 @@ import {
   HeaderItemSpaceship,
 } from './styles';
 
-import LogoImg from '~/assets/logo.png';
-
 import EmptyPage from '~/components/EmptyPage';
 import Loading from '~/components/Loading';
 import Lista from '~/components/Lista';
 import ListaItem from '~/components/ListaItem';
 import DateText from '~/components/DateText';
+import Header from '~/components/Header';
 
-import api from '~/services/api';
+// import api from '~/services/api';
 
 import temp from './temp';
 
@@ -51,15 +45,7 @@ export default function Home() {
 
   return (
     <Container>
-      <Header>
-        <LogoContainer>
-          <Logo src={LogoImg} alt="Logo" />
-        </LogoContainer>
-
-        <TitleContainer>
-          <Title>Guia de personagens</Title>
-        </TitleContainer>
-      </Header>
+      <Header />
 
       {laoding ? (
         <Loading />
