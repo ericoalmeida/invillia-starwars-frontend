@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import crypto from 'crypto';
 
 import {
   Container,
@@ -16,27 +18,31 @@ import ListaItem from '~/components/ListaItem';
 import DateText from '~/components/DateText';
 import Header from '~/components/Header';
 
-// import api from '~/services/api';
-
-import temp from './temp';
+import api from '~/services/api';
 
 export default function Home() {
+  const history = useHistory();
   const [people, setPeople] = useState([]);
   const [laoding, setLoading] = useState(false);
 
   async function loadDataOfPeoples() {
     setLoading(true);
 
-    // const response = await api.get('people');
+    const response = await api.get('people');
 
-    // setPeople(response.data.results);
+    setPeople(response.data.results);
 
-    setPeople(temp.results);
     setLoading(false);
   }
 
-  function showSpaceShips(spaceships) {
-    console.log(spaceships);
+  function showSpaceShips(apeople) {
+    history.push('/spaceshippeople', {
+      apeople,
+      starships: apeople.starships.map((url) => {
+        const [, newUrl] = url.split('api/');
+        return newUrl;
+      }),
+    });
   }
 
   useEffect(() => {
@@ -52,12 +58,12 @@ export default function Home() {
       ) : (
         <>
           {people.length === 0 ? (
-            <EmptyPage />
+            <EmptyPage message="Oops! Não encontramos nenhum personagem de STAR WARS" />
           ) : (
             <Lista>
               {people.map((peopleItem) => {
                 return (
-                  <ListaItem>
+                  <ListaItem key={crypto.randomBytes(8).toString('HEX')}>
                     <DateContainer>
                       <DateText date={peopleItem.created} />
                     </DateContainer>
@@ -79,7 +85,7 @@ export default function Home() {
                     <HeaderItemSpaceship>
                       <button
                         type="button"
-                        onClick={() => showSpaceShips(peopleItem.starships)}
+                        onClick={() => showSpaceShips(peopleItem)}
                       >
                         Naves Espaciais
                       </button>
