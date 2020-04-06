@@ -117,3 +117,27 @@ export const LabelTitleGender = styled.p`
 
   margin-top: 5px;
 `;
+
+export const Paginacao = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  width: 100px;
+
+  background: #fff;
+
+  button {
+    border: 0;
+    background: #7159c1;
+    height: 30px;
+    width: 30px;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+  }
+  button:hover {
+    background: #40194e;
+  }
+`;

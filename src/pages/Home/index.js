@@ -13,6 +13,7 @@ import {
   LabelDescription,
   LabelTitleDescription,
   LabelTitleGender,
+  Paginacao,
 } from './styles';
 
 import EmptyPage from '~/components/EmptyPage';
@@ -21,6 +22,7 @@ import Lista from '~/components/Lista';
 import ListaItem from '~/components/ListaItem';
 import DateText from '~/components/DateText';
 import Header from '~/components/Header';
+import Footer from '~/components/Footer';
 
 import api from '~/services/api';
 
@@ -29,10 +31,10 @@ export default function Home() {
   const [people, setPeople] = useState([]);
   const [laoding, setLoading] = useState(false);
 
-  async function loadDataOfPeoples() {
+  async function loadDataOfPeoples(page = 1) {
     setLoading(true);
 
-    const response = await api.get('people');
+    const response = await api.get(`people/?page=${page}`);
 
     setPeople(response.data.results);
 
@@ -64,69 +66,87 @@ export default function Home() {
           {people.length === 0 ? (
             <EmptyPage message="Oops! Não encontramos nenhum personagem de STAR WARS" />
           ) : (
-            <Lista>
-              {people.map((peopleItem) => {
-                return (
-                  <ListaItem key={crypto.randomBytes(8).toString('HEX')}>
-                    <DateContainer>
-                      <DateText date={peopleItem.created} />
-                    </DateContainer>
+            <>
+              <Lista>
+                {people.map((peopleItem) => {
+                  return (
+                    <ListaItem key={crypto.randomBytes(8).toString('HEX')}>
+                      <DateContainer>
+                        <DateText date={peopleItem.created} />
+                      </DateContainer>
 
-                    <HeaderItem>
-                      <p>{peopleItem.name}</p>
-                    </HeaderItem>
+                      <HeaderItem>
+                        <p>{peopleItem.name}</p>
+                      </HeaderItem>
 
-                    <HeaderItemDescription>
-                      <div className="avatar">
-                        <Avatar
-                          src={`https://api.adorable.io/avatars/42/${peopleItem.name}@adorable.png`}
-                        />
-                      </div>
+                      <HeaderItemDescription>
+                        <div className="avatar">
+                          <Avatar
+                            src={`https://api.adorable.io/avatars/42/${peopleItem.name}@adorable.png`}
+                          />
+                        </div>
 
-                      <div className="descrip">
-                        <LabelTitleDescription>
-                          Eye Color:
-                        </LabelTitleDescription>
+                        <div className="descrip">
+                          <LabelTitleDescription>
+                            Eye Color:
+                          </LabelTitleDescription>
 
-                        <LabelDescription>
-                          {peopleItem.eye_color}
-                        </LabelDescription>
+                          <LabelDescription>
+                            {peopleItem.eye_color}
+                          </LabelDescription>
 
-                        <LabelTitleDescription>
-                          Hair Color:
-                        </LabelTitleDescription>
+                          <LabelTitleDescription>
+                            Hair Color:
+                          </LabelTitleDescription>
 
-                        <LabelDescription>
-                          {peopleItem.hair_color}
-                        </LabelDescription>
+                          <LabelDescription>
+                            {peopleItem.hair_color}
+                          </LabelDescription>
 
-                        <LabelTitleDescription>
-                          Skin Color:
-                        </LabelTitleDescription>
+                          <LabelTitleDescription>
+                            Skin Color:
+                          </LabelTitleDescription>
 
-                        <LabelDescription>
-                          {peopleItem.skin_color}
-                        </LabelDescription>
-                      </div>
-                    </HeaderItemDescription>
+                          <LabelDescription>
+                            {peopleItem.skin_color}
+                          </LabelDescription>
+                        </div>
+                      </HeaderItemDescription>
 
-                    <HeaderItemGender>
-                      <LabelTitleGender>Gender:</LabelTitleGender>
-                      <LabelDescription>{peopleItem.gender}</LabelDescription>
-                    </HeaderItemGender>
+                      <HeaderItemGender>
+                        <LabelTitleGender>Gender:</LabelTitleGender>
+                        <LabelDescription>{peopleItem.gender}</LabelDescription>
+                      </HeaderItemGender>
 
-                    <HeaderItemSpaceship>
-                      <button
-                        type="button"
-                        onClick={() => showSpaceShips(peopleItem)}
-                      >
-                        Naves Espaciais
-                      </button>
-                    </HeaderItemSpaceship>
-                  </ListaItem>
-                );
-              })}
-            </Lista>
+                      <HeaderItemSpaceship>
+                        <button
+                          type="button"
+                          onClick={() => showSpaceShips(peopleItem)}
+                        >
+                          Naves Espaciais
+                        </button>
+                      </HeaderItemSpaceship>
+                    </ListaItem>
+                  );
+                })}
+              </Lista>
+
+              <Footer>
+                <Paginacao>
+                  <button type="button" onClick={() => loadDataOfPeoples(1)}>
+                    1
+                  </button>
+
+                  <button type="button" onClick={() => loadDataOfPeoples(2)}>
+                    2
+                  </button>
+
+                  <button type="button" onClick={() => loadDataOfPeoples(3)}>
+                    3
+                  </button>
+                </Paginacao>
+              </Footer>
+            </>
           )}
         </>
       )}

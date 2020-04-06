@@ -44,4 +44,8 @@ button{
  cursor: pointer;
 }
 
+footer{
+  list-style: none;
+}
+
 `;
