@@ -2,8 +2,8 @@
   <img alt="starWars" title="starWars" src="https://i.ibb.co/bRPVM6t/logo.png" width="250px" />
 </h1>
 
-[![GitHUB](https://github.com/ericoalmeida](https://github.com/ericoalmeida)
-[![LinkedIn](https://www.linkedin.com/in/almeidaerico/)](https://www.linkedin.com/in/almeidaerico/)
+[![GitHUB](https://img.shields.io/npm/v/react-native-template-rocketseat-basic.svg?label=npm%20package)](https://github.com/ericoalmeida)
+[![LinkedIn](https://img.shields.io/npm/v/react-native-template-rocketseat-basic.svg?label=npm%20package)](https://www.linkedin.com/in/almeidaerico/)
 
 ## 🚀 Considerações iniciais.
 
