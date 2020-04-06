@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import crypto from 'crypto';
 
 import {
@@ -31,12 +32,18 @@ export default function Home() {
   const [people, setPeople] = useState([]);
   const [laoding, setLoading] = useState(false);
 
-  async function loadDataOfPeoples(page = 1) {
+  const [page, setPage] = useState(1);
+  const [previousPage, setPreviousPage] = useState(null);
+  const [nextPage, setNextPage] = useState(null);
+
+  async function loadDataOfPeoples() {
     setLoading(true);
 
     const response = await api.get(`people/?page=${page}`);
 
     setPeople(response.data.results);
+    setPreviousPage(response.data.previous);
+    setNextPage(response.data.next);
 
     setLoading(false);
   }
@@ -51,9 +58,22 @@ export default function Home() {
     });
   }
 
+  function loadPreviousPage() {
+    if (previousPage === null) return;
+    if (page === 1) return;
+
+    setPage(page - 1);
+  }
+
+  function loadNextPage() {
+    if (nextPage === null) return;
+
+    setPage(page + 1);
+  }
+
   useEffect(() => {
     loadDataOfPeoples();
-  }, []);
+  }, [page]);
 
   return (
     <Container>
@@ -133,16 +153,14 @@ export default function Home() {
 
               <Footer>
                 <Paginacao>
-                  <button type="button" onClick={() => loadDataOfPeoples(1)}>
-                    1
+                  <button type="button" onClick={loadPreviousPage}>
+                    <FiArrowLeft size={16} color="#fff" />
+                    Anterior
                   </button>
 
-                  <button type="button" onClick={() => loadDataOfPeoples(2)}>
-                    2
-                  </button>
-
-                  <button type="button" onClick={() => loadDataOfPeoples(3)}>
-                    3
+                  <button type="button" onClick={loadNextPage}>
+                    Próxima
+                    <FiArrowRight size={16} color="#fff" />
                   </button>
                 </Paginacao>
               </Footer>

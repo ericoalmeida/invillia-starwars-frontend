@@ -124,7 +124,8 @@ export const Paginacao = styled.div`
   justify-content: space-around;
   align-items: center;
   height: 100%;
-  width: 100px;
+  width: 210px;
+  margin-right: 5px;
 
   background: #fff;
 
@@ -132,10 +133,15 @@ export const Paginacao = styled.div`
     border: 0;
     background: #7159c1;
     height: 30px;
-    width: 30px;
+    width: 100px;
     border-radius: 4px;
     color: #fff;
     font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
   }
   button:hover {
     background: #40194e;
